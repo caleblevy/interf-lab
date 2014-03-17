@@ -1,0 +1,58 @@
+import ephem
+help(ephem) #look at what's there
+#Look at sun
+sun = ephem.Sun()
+obs = emphem.Observer()
+obs.lat = 37.8732*np.pi/180
+print obs.lat
+obs.lat # print obs.lat <==> obs.lat.__str__()
+obs.long = -122.2573*np.pi/180
+import time
+time.time() # Time since 1970 or so...
+obs # has a date
+obs.date
+print obs.date() # UTC time... We have to friggin update this manually (set when instantiated observer)
+ephem.julian_date() # This one changes... the number from 4000 BC or so
+ephem.now() # The date now since... 1899... updates
+# Supposedly, a = obs.now() just records the time now, no furhter fancy business
+ephem.julian_date(obs.date) # recording
+obs.date = ephem.julian_date() # bad idea
+obs.date = ephem.now()
+sun.compute(obs)
+print sun.ra
+print sun.dec
+obs.lat
+# Printing star trails... what about in future... will pyephem die trying? Will I survive trying to induce matplotlib to show as much?
+obs.siderial_time() # tells siderial time
+print obs.siderial_time(), sun.ra # actually, what was siderial time
+# sun rotates by at 1 hr/hr (Is this exact?
+print obs.sidereal_time() - obs.ra
+>>> -4.762
+# fist at arms length is 1hr of sky...
+# It has been suggested that prudence would 
+import numpy as np
+np.cos(sun.dec)
+xyz = np.array([0,.5,.3])
+ssh -XY radiolab@quasar
+Cud4b4ck
+mkdir clevy
+cd clevy
+ipython
+import radiolab
+radiolab.pntHome() # Can I have system launch this automatically... scheduler
+# If successful, we get message...
+# and we get a 0... (when all gone well, and 1 if gone wrong)
+radiolab.pntTo(alt=45,az=180) # To specified azimuth 
+# How to capture that output?
+# Second number for next telescope
+# Limit is 87 degrees
+# And 15 degrees
+radiolab.recordDVM() # Digital Volt Meter (Cadence of about once per second).
+# Gets recorded as mpz file...
+# 500 plotpoints...
+radiolab.recordDVM(filename='newdata.npz',showPlot=True)
+data = np.load('newdata.npz')
+#LST local sidereal time
+ssh -x 
+'ssh'
+# Do not want higher declination, north, telescope problems
