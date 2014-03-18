@@ -53,5 +53,5 @@ def RD_To_AA(Vec,LST,lat):
     CartVec = ToCart(Vec)
     TransVec = np.dot(RAMat,CartVec)
     AngVec = ToAng(TransVec)
-    AngVec[0] = AngVec[0]+np.pi
+    AngVec[0] = AngVec[0]+2*np.pi
     return AngVec

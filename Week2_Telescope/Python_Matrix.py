@@ -17,7 +17,7 @@ obs.lon = coords.ToRad(Berkeley_Lon)
 
 Sun = ephem.Sun()
 
-obs.date = np.float(ephem.now())+12/24.
+obs.date = np.float(ephem.now())
 Sun.compute(obs)
 LST = np.float(obs.sidereal_time())
 
